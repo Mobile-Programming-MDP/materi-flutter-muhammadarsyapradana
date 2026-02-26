@@ -1,0 +1,32 @@
+[
+  {
+    "nama": "Muhammad Junaidi",
+    "umur": 57,
+    "alamat": {
+      "jalan": "Jl. Pahlawan No. 431",
+      "kota": "Jepara",
+      "provinsi": "Jawa Tengah"
+    },
+    "hobi": ["membaca", "bersepeda"]
+  },
+  {
+    "nama": "Muhamamd Arsya Pradana",
+    "umur": 19,
+    "alamat": {
+      "jalan": "Jl. Merdeka No. 962",
+      "kota": "Jawa Barat",
+      "provinsi": "Bandung"
+    },
+    "hobi": ["berlari", "catur"]
+  },
+  {
+    "nama": "Abel Muhammad Zahrian",
+    "umur": 59,
+    "alamat": {
+      "jalan": "Jl. Sudirman No. 832",
+      "kota": "Jakarta",
+      "provinsi": "DKI Jakarta"
+    },
+    "hobi": ["membaca", "bersepeda"]
+  }
+]
