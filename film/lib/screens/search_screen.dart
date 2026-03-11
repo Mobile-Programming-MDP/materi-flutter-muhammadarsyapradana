@@ -1,10 +1,9 @@
 import 'package:film/models/movies.dart';
 import 'package:film/screens/detail_screen.dart';
-import 'package:film/services/api_services.dart';
+import 'package:film/service/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:film/models/movies.dart';
 import 'package:film/screens/detail_screen.dart';
-import 'package:film/services/api_services.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

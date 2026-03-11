@@ -1,8 +1,8 @@
 import 'package:film/models/movies.dart';
+import 'package:film/service/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:film/models/movies.dart';
 import 'package:film/screens/detail_screen.dart';
-import 'package:film/services/api_services.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,9 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<Map<String, dynamic>> allMoviesData =
         await _apiService.getAllMovies();
     final List<Map<String, dynamic>> trendingMoviesData =
-        await _apiService.getTrendingMovies();
+        await _apiService.getTrendingMoving();
     final List<Map<String, dynamic>> popularMoviesData =
-        await _apiService.getPopularMovies();
+        await _apiService.getPopularMoving();
 
     setState(() {
       _allMovies = allMoviesData.map((json) => Movie.fromJson(json)).toList();
