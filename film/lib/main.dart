@@ -1,4 +1,5 @@
 import 'package:film/screens/home_screen.dart';
+import 'package:film/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -6,18 +7,15 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
+
   const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        
-        body: Center(
-          child:HomeScreen(),
-        ),
-      ),
+      home: MainScreen(),
     );
   }
 }
+

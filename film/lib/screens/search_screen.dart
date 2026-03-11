@@ -35,7 +35,7 @@ class SearchScreenState extends State<SearchScreen> {
       return;
     }
     final List<Map<String, dynamic>> searchData =
-        await _apiService.serchMovies(_searchController.text);
+        await _apiService.searchMovies(_searchController.text);
     setState(() {
       _searchResults = searchData.map((e) => Movie.fromJson(e)).toList();
     });
