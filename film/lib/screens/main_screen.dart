@@ -1,8 +1,7 @@
-import 'package:film/screens/favorite_screen.dart';
+import 'package:film/screens/favorite_screens.dart';
 import 'package:film/screens/home_screen.dart';
 import 'package:film/screens/search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:film/screens/favorite_screen.dart';
 import 'package:film/screens/home_screen.dart';
 import 'package:film/screens/search_screen.dart';
 
