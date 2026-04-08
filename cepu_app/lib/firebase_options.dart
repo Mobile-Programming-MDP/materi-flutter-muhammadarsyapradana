@@ -33,10 +33,7 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,22 +47,33 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyABVMqCkAoryjaYWpQjhrzyf6UF_tqPtrk',
-    appId: '1:1076757814194:web:3964b4077df2bb83a222ab',
-    messagingSenderId: '1076757814194',
-    projectId: 'khalbhi-dev',
-    authDomain: 'khalbhi-dev.firebaseapp.com',
-    databaseURL: 'https://khalbhi-dev-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'khalbhi-dev.firebasestorage.app',
-    measurementId: 'G-W8Y1M17NP6',
+    apiKey: 'AIzaSyAhGXIVCD3YLxscrhK0BwADqr3kfqfAvsQ',
+    appId: '1:511143004946:web:131563d48d7cee758101cb',
+    messagingSenderId: '511143004946',
+    projectId: 'cepu-app-b28f5',
+    authDomain: 'cepu-app-b28f5.firebaseapp.com',
+    databaseURL: 'https://cepu-app-b28f5-default-rtdb.firebaseio.com',
+    storageBucket: 'cepu-app-b28f5.firebasestorage.app',
+    measurementId: 'G-NRQLN4J9NJ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyALbdcTXO-4e8N4-O22YVDypBGFyNycbO4',
-    appId: '1:1076757814194:android:66d014bde82482e0a222ab',
-    messagingSenderId: '1076757814194',
-    projectId: 'khalbhi-dev',
-    databaseURL: 'https://khalbhi-dev-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'khalbhi-dev.firebasestorage.app',
+    apiKey: 'AIzaSyAPwPPCpKEJZOBwBL_AB2cvCDa7e72sSBY',
+    appId: '1:511143004946:android:c537aabb69f888c68101cb',
+    messagingSenderId: '511143004946',
+    projectId: 'cepu-app-b28f5',
+    databaseURL: 'https://cepu-app-b28f5-default-rtdb.firebaseio.com',
+    storageBucket: 'cepu-app-b28f5.firebasestorage.app',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyAhGXIVCD3YLxscrhK0BwADqr3kfqfAvsQ',
+    appId: '1:511143004946:web:11688da657130a028101cb',
+    messagingSenderId: '511143004946',
+    projectId: 'cepu-app-b28f5',
+    authDomain: 'cepu-app-b28f5.firebaseapp.com',
+    databaseURL: 'https://cepu-app-b28f5-default-rtdb.firebaseio.com',
+    storageBucket: 'cepu-app-b28f5.firebasestorage.app',
+    measurementId: 'G-E5WVS3FQMQ',
   );
 }
