@@ -67,3 +67,54 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// COMMENT FIREBASE
+
+// 1. Comment untuk menginstall firebase    secara global
+// -- npm install -g firebase-tools
+
+// 2. Comment login firebase
+// -- firebase login
+
+// 3. Comment untuk melihat project firebase
+// -- firebase projects:list
+
+// 4. Comment membuat project baru firebase
+// -- firebase projects:create
+
+// 5. Comment logout firebase account
+// -- firebase logout
+
+
+// COMMENT FLUTTERFIRE
+
+// Comment install flutterfire secara global
+// -- dart pub global activate flutterfire_cli
+
+// 2. Comment untuk menghubungkan project dengan project firebase
+// -- flutterfire configure
+
+// 3. Comment download dependency yang di butuhkan
+// -- flutter pub add firebase_core
+
+// -- flutter pub add firebase_database
+
+
+
+// FUNGSI INSERT DELETE REALTIME DATABASE
+
+//   void addShoppingItems(String itemName) {
+//     _database.push().set({'name': itemName});
+//   }
+
+//   Future<void> removeShoppingItem(String key) async {
+//     await _database.child(key).remove();
+//   }
+
+// cara buka firebase realtime database di browser
+// 1. Buka browser dan masuk ke console.firebase.google.com
+// 2. Pilih project yang sudah dibuat
+// 3. Di menu sebelah kiri, klik "Database"
+// 4. Pilih "Realtime Database"
+// 5. Di bagian "Data", Anda dapat melihat struktur data yang telah Anda buat dan melakukan
+// operasi seperti menambahkan, mengedit, atau menghapus data secara langsung melalui antarmuka web.
