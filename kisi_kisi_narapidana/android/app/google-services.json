@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "606802107022",
+    "firebase_url": "https://kisi-kisi-uts-2e404-default-rtdb.firebaseio.com",
+    "project_id": "kisi-kisi-uts-2e404",
+    "storage_bucket": "kisi-kisi-uts-2e404.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606802107022:android:a245c6e1d7ab7fb0ca87df",
+        "android_client_info": {
+          "package_name": "com.example.kisi_kisi_narapidana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC-14V2b7CgZsQD9rxUbN0vVhqgO9IPss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606802107022:android:1a3efc0dea68736aca87df",
+        "android_client_info": {
+          "package_name": "com.example.kisi_uts_narapidana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC-14V2b7CgZsQD9rxUbN0vVhqgO9IPss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
