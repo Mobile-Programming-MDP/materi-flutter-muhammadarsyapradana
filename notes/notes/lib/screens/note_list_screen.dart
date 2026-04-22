@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/models/note.dart';
 import 'package:notes/services/note_service.dart';
 import 'package:notes/widgets/note_dialog.dart';
 
@@ -13,24 +14,27 @@ class _NoteListScreenState extends State<NoteListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notes'),
-      ),
-      body: const NoteListScreen(),
+      appBar: AppBar(title: const Text('Notes')),
+      body: const NoteList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
             context: context,
             builder: (context) {
-              return const NoteDialog();
+              return NoteDialog();
             },
           );
         },
-        tooltip: 'Add Note ',
+        tooltip: 'Add Note',
         child: const Icon(Icons.add),
-        
-        class NoteListScreen extends StatelessWidget {
-        const NoteListScreen({super.key});
+      ),
+    );
+  }
+}
+
+class NoteList extends StatelessWidget {
+  const NoteList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -41,15 +45,13 @@ class _NoteListScreenState extends State<NoteListScreen> {
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return const Center(
-              child: CircularProgressIndicator(),
-            ); // Center
+            return const Center(child: CircularProgressIndicator());
           default:
             return ListView(
               padding: const EdgeInsets.only(bottom: 80),
               children: snapshot.data!.map((document) {
                 return Card(
-                  child: InkWell(
+                  child: ListTile(
                     onTap: () {
                       showDialog(
                         context: context,
@@ -58,72 +60,56 @@ class _NoteListScreenState extends State<NoteListScreen> {
                         },
                       );
                     },
-                    child: Column(
-                      children: [
-                        document.imageUrl != null &&
-                                Uri.parse(document.imageUrl!).isAbsolute
-                            ? ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(16),
-                                  topRight: Radius.circular(16),
-                                ), // BorderRadius.only
-                                child: Image.network(
-                                  document.imageUrl!,
-                                  fit: BoxFit.cover,
-                                  alignment: Alignment.center,
-                                  width: double.infinity,
-                                  height: 150,
-                                ), // Image.network
-                              ) // ClipRRect
-                            : Container(),
-                        ListTile(
-                          title: Text(document.title),
-                          subtitle: Text(document.description),
-                          trailing: InkWell(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text('Konfirmasi Hapus'),
-                                    content: Text(
-                                        'Yakin ingin menghapus data \'${document.title}\' ?'), // Text
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: const Text('Cancel'),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                          TextButton(
-                                        child: const Text('Hapus'),
-                                        onPressed: () {
-                                          NoteService.deleteNote(document)
-                                              .whenComplete(() =>
-                                                  Navigator.of(context).pop());
-                                        },
-                                      ), // TextButton
-                                    ], // <Widget>[]
-                                  ); // AlertDialog
-                                },
-                              );
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              child: Icon(Icons.delete),
-                            ), // Padding
-                          ), // InkWell
-                        ), // ListTile
-                      ],
-                    ), // Column
-                  ), // InkWell
-                ); // Card
+                    title: Text(document.title),
+                    subtitle: Text(document.description),
+                    trailing: InkWell(
+                      onTap: () {
+                        showAlertDialog(context, document);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Icon(Icons.delete),
+                      ),
+                    ),
+                  ),
+                );
               }).toList(),
-            ); // ListView
+            );
         }
       },
-    ); // StreamBuilder
+    );
   }
-}
-      ), // FloatingActionButton
-    ); // Scaffold
+
+  void showAlertDialog(BuildContext context, Note document) {
+    // set up the buttons
+    Widget cancelButton = ElevatedButton(
+      child: const Text("No"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = ElevatedButton(
+      child: const Text("Yes"),
+      onPressed: () {
+        NoteService.deleteNote(document).whenComplete(() {
+          Navigator.of(context).pop();
+        });
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Delete Note"),
+      content: const Text("Are you sure to delete Note?"),
+      actions: [cancelButton, continueButton],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
