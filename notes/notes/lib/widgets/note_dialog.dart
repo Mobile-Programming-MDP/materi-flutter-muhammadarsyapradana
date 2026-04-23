@@ -195,7 +195,7 @@ class _NoteDialogState extends State<NoteDialog> {
               ).whenComplete(() => Navigator.of(context).pop());
             }
           },
-          child: Text(widget.note == null ? 'Add' : 'Update'),
+          child: Text(widget.note == null ? 'Add Notes' : 'Update Notes'),
         ),
       ],
     );
