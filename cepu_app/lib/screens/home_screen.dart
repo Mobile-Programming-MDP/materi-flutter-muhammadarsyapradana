@@ -1,3 +1,4 @@
+import 'package:cepu_app/screens/add_post_screen.dart';
 import 'package:cepu_app/screens/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //testSetUser();
+  }
+
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
     if (!mounted) return;
@@ -20,17 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  //Fungsi untuk membuat url foto profile / avatar
-  String generateAvatarUrl(String? fullName) {
-    final formattedName = fullName!.trim().replaceAll(' ', '+');
-    return 'https://ui-avatars.com/api/?name=$formattedName&color=FFFFFF&background=000000';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home Screen"),
+        title: const Text("Cepu App"),
         actions: [
           IconButton(
             onPressed: () {
@@ -43,22 +45,36 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          Image.network(
-            generateAvatarUrl(
-              FirebaseAuth.instance.currentUser?.displayName.toString(),
+          Center(
+            child: Text(
+              "Hallo ${FirebaseAuth.instance.currentUser?.displayName}",
             ),
-            width: 100,
-            height: 100,
           ),
-          SizedBox(height: 8.0),
-          Text(
-            FirebaseAuth.instance.currentUser!.displayName!,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 16.0),
           const Center(child: Text("You Have Been Signed In!")),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const AddPostScreen()),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
+
+  // void testSetUser() async {
+  //   User? user = FirebaseAuth.instance.currentUser;
+
+  //   if (user != null) {
+  //     //await user.updateDisplayName("Nur Rachmat");
+  //     await user.updateProfile(
+  //       displayName: "Nur Rachmat",
+  //       photoURL:
+  //           "https://www.harapanrakyat.com/wp-content/uploads/2025/07/Kapten-Timnas-Indonesia-Jay-Idzes-Dilirik-5-Klub-Top-Eropa.jpg",
+  //     );
+  //     await user.reload();
+  //   }
+  // }
 }

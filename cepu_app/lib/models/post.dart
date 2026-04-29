@@ -10,26 +10,27 @@ class Post {
   String? latitude;
   String? longitude;
   String? userId;
-  String? userFullName;
+  String? fullName;
 
   Post({
     this.id,
-    required this.image,
-    required this.description,
-    required this.category,
+    this.image,
+    this.description,
+    this.category,
     this.createdAt,
     this.updatedAt,
     this.latitude,
     this.longitude,
     this.userId,
-    this.userFullName,
+    this.fullName
   });
 
-  factory Post.fromDocument(DocumentSnapshot doc) {
+  factory Post.fromDocument(DocumentSnapshot doc)
+  {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return Post(
       id: doc.id,
-      image: data['image'],
+      image: doc['image'],
       description: data['description'],
       category: data['category'],
       createdAt: data['created_at'] as Timestamp,
@@ -37,7 +38,7 @@ class Post {
       latitude: data['latitude'],
       longitude: data['longitude'],
       userId: data['user_id'],
-      userFullName: data['user_full_name'],
+      fullName: data['full_name'],
     );
   }
 
@@ -46,10 +47,12 @@ class Post {
       'image': image,
       'description': description,
       'category': category,
-      'created_at': createdAt,
-      'updated_at': updatedAt,
       'latitude': latitude,
       'longitude': longitude,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
+      'user_id': userId,
+      'full_name': fullName,
     };
   }
 }
