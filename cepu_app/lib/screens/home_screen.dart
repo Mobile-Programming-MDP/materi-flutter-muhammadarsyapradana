@@ -10,13 +10,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    //testSetUser();
-  }
-
   Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
     if (!mounted) return;
@@ -25,6 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
       MaterialPageRoute(builder: (context) => SignInScreen()),
       (route) => false,
     );
+  }
+
+  //Fungsi untuk membuat url foto profile / avatar
+  String generateAvatarUrl(String? fullName) {
+    final formattedName = fullName!.trim().replaceAll(' ', '+');
+    return 'https://ui-avatars.com/api/?name=$formattedName&color=FFFFFF&background=000000';
   }
 
   @override
@@ -44,28 +43,22 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          Center(
-            child: Text(
-              "Hallo ${FirebaseAuth.instance.currentUser?.displayName}",
+          Image.network(
+            generateAvatarUrl(
+              FirebaseAuth.instance.currentUser?.displayName.toString(),
             ),
+            width: 100,
+            height: 100,
           ),
+          SizedBox(height: 8.0),
+          Text(
+            FirebaseAuth.instance.currentUser!.displayName!,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 16.0),
           const Center(child: Text("You Have Been Signed In!")),
         ],
       ),
     );
   }
-
-  // void testSetUser() async {
-  //   User? user = FirebaseAuth.instance.currentUser;
-
-  //   if (user != null) {
-  //     //await user.updateDisplayName("Nur Rachmat");
-  //     await user.updateProfile(
-  //       displayName: "Nur Rachmat",
-  //       photoURL:
-  //           "https://www.harapanrakyat.com/wp-content/uploads/2025/07/Kapten-Timnas-Indonesia-Jay-Idzes-Dilirik-5-Klub-Top-Eropa.jpg",
-  //     );
-  //     await user.reload();
-  //   }
-  // }
 }

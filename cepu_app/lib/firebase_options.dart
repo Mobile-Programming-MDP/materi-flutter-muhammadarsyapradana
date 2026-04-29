@@ -76,4 +76,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'cepu-app-b28f5.firebasestorage.app',
     measurementId: 'G-E5WVS3FQMQ',
   );
+
 }
